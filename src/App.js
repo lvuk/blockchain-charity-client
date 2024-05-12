@@ -59,13 +59,14 @@ function App() {
     return (
         <div className="App">
             <h1>BiteBack</h1>
-            <img src="logo.png" alt="BiteBack Logo" />
+            <div>Address: {walletAddress}</div>
+            <div className="counter-container">
+                <CountUp className="counter" end={100} duration={5} />
+                <p>USDT</p>
+            </div>
             <button onClick={connectWalletHandler}>
                 {walletAddress ? "Connected" : "Connect Wallet"}
             </button>
-            <div>Address: {walletAddress}</div>
-
-            <CountUp end={fundBalance} duration={5} />
             <button onClick={sendFundsHandler} disabled={!walletAddress}>
                 Donate 0.01 ETH
             </button>

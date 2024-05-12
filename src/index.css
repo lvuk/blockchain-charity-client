@@ -19,6 +19,8 @@ code {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
+  height: 100vh;
+  background-color: var(--background-color);
 }
 
 h1 {
@@ -54,4 +56,32 @@ button:disabled {
 div {
   margin-bottom: 10px;
   font-size: 18px;
+}
+
+.counter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../public/logo.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  height: 50%;
+  flex-direction: column;
+}
+
+.counter-container p {
+  font-size: 80px;
+  margin: 0;
+  color: white;
+}
+
+.counter{
+  font-size: 175px;
+  color: var(--background-color);
+  background: rgb(251,251,235);
+  background: radial-gradient(circle, rgba(102,122,143,1) 10%, rgba(7,24,46,1) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
