@@ -7,7 +7,7 @@ function App() {
     const [walletAddress, setWalletAddress] = useState("");
     const [provider, setProvider] = useState(null);
     const fundAddress = process.env.REACT_APP_FUND_ADDRESS;
-    const [fundBalance, setFundBalance] = useState(10000);
+    const [fundBalance, setFundBalance] = useState(0);
 
     useEffect(() => {
         if (window.ethereum) {
