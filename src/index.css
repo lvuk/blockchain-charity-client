@@ -7,7 +7,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   --background-color: #fbfbeb;
   --accent-color: #07182e;
-  --accent2-color:#667a8f;
+  --accent2-color: #667a8f;
+  background-color: var(--background-color);
 }
 
 code {
@@ -18,9 +19,31 @@ code {
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
-  padding: 20px;
+  /* padding: 20px; */
   height: 100vh;
   background-color: var(--background-color);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem 6rem;
+  justify-content: space-between;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  text-transform: uppercase;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  margin: auto;
 }
 
 h1 {
@@ -33,7 +56,7 @@ img {
 }
 
 button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -41,6 +64,11 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.currency-input {
+  /* border: none; */
+  padding: 13px 19px;
 }
 
 button:hover {
@@ -53,8 +81,22 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.connect-donate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.donate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 div {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-size: 18px;
 }
 
@@ -62,7 +104,7 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../public/logo.svg");
+  background-image: url('../public/logo.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -76,11 +118,15 @@ div {
   color: white;
 }
 
-.counter{
+.counter {
   font-size: 175px;
   color: var(--background-color);
-  background: rgb(251,251,235);
-  background: radial-gradient(circle, rgba(102,122,143,1) 10%, rgba(7,24,46,1) 100%);
+  background: rgb(251, 251, 235);
+  background: radial-gradient(
+    circle,
+    rgba(102, 122, 143, 1) 10%,
+    rgba(7, 24, 46, 1) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
