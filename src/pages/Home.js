@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import CountUp from 'react-countup';
-import Navbar from './Components/Navbar';
+import Navbar from '../Components/Navbar';
 import CurrencyInput from 'react-currency-input-field';
 import { Bounce, toast } from 'react-toastify';
 
