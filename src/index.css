@@ -8,7 +8,7 @@ body {
   --background-color: #fbfbeb;
   --accent-color: #07182e;
   --accent2-color: #667a8f;
-  background-color: var(--background-color);
+  /* background-color: var(--background-color); */
 }
 
 code {
@@ -31,6 +31,18 @@ nav {
   justify-content: space-between;
   background-color: var(--accent-color);
   color: white;
+  margin-bottom: 2.5rem;
+}
+
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 2rem;
 }
 
 .links {
@@ -102,12 +114,12 @@ div {
 
 .counter-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  background-image: url('../public/logo.svg');
+  /* background-image: url('../public/logo.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: contain; */
   height: 50%;
   flex-direction: column;
 }
@@ -116,6 +128,15 @@ div {
   font-size: 80px;
   margin: 0;
   color: white;
+}
+
+.home-logo {
+  width: 512px;
+  height: 512px;
+}
+
+.heading {
+  scale: 2;
 }
 
 .counter {

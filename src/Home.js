@@ -85,13 +85,16 @@ const Home = () => {
   return (
     <div className='App'>
       <Navbar />
-      <h1>BiteBack</h1>
-      <div>Address: {walletAddress}</div>
+      {/* <h1>BiteBack</h1> */}
+      {/* <img src='logo-text-nobg.png' alt='' className='heading' /> */}
       <div className='counter-container'>
-        <CountUp className='counter' end={100} duration={5} />
-        <p>USDT</p>
+        <CountUp className='counter' end={100000} duration={5} />
+        {/* <img src='logo.svg' alt='' className='home-logo' /> */}
+        <p className='counter'>USDT</p>
       </div>
       <div className='connect-donate'>
+        <div>Address: {walletAddress}</div>
+
         <button onClick={connectWalletHandler}>
           {walletAddress ? 'Connected' : 'Connect Wallet'}
         </button>
