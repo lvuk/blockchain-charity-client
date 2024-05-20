@@ -31,7 +31,7 @@ nav {
   justify-content: space-between;
   background-color: var(--accent-color);
   color: white;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .home-container {
@@ -151,4 +151,89 @@ div {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.contact-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+
+.right form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.left,
+.middle,
+.right {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.right {
+  flex: 1;
+}
+
+.middle {
+  flex: 0.7;
+}
+
+.left {
+  flex: 1.5;
+}
+
+.form {
+  width: 100%;
+}
+
+.middle-content {
+  font-size: 0.9rem;
+}
+
+/* Style for Bootstrap-like input fields */
+.form input[type='text'],
+.form input[type='email'],
+.form input[type='password'],
+.form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+textarea {
+  resize: none;
+  min-height: 250px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+/* Hover effect */
+.form input[type='text']:hover,
+.form input[type='email']:hover,
+.form input[type='password']:hover,
+.form textarea:hover {
+  border-color: #b8c0ca;
+}
+
+/* Focus effect */
+.form input[type='text']:focus,
+.form input[type='email']:focus,
+.form input[type='password']:focus,
+.form textarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }

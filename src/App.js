@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Transactions from './pages/Transactions';
+import Contact from './pages/Contact';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route exact path='/transactions' element={<Transactions />} />
+        <Route exact path='/contact' element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

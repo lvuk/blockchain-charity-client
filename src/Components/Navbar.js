@@ -13,7 +13,9 @@ const Navbar = () => {
         <Link to={'/transactions'} className='link'>
           Transactions
         </Link>
-        <p>Contact</p>
+        <Link to={'/contact'} className='link'>
+          Contact
+        </Link>
       </div>
     </nav>
   );
