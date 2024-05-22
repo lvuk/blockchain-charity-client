@@ -237,3 +237,35 @@ textarea {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
+
+.transaction {
+  padding: 2rem;
+  width: 50vw;
+  border: solid 1px lightgray;
+}
+
+.transactions-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.transaction-hash {
+  font-size: 0.85rem;
+}
+
+.transaction-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transaction-from-to {
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
