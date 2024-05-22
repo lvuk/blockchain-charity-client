@@ -2,6 +2,7 @@ import { ethers } from 'ethers';
 import Navbar from '../Components/Navbar';
 import { useEffect, useState } from 'react';
 import Transaction from '../Components/Transaction';
+import Pagination from 'rc-pagination';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -33,6 +34,7 @@ const Transactions = () => {
         {transactions.map((transaction) => {
           return <Transaction transaction={transaction} />;
         })}
+        <Pagination />
       </div>
     </div>
   );

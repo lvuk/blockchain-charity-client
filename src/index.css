@@ -254,6 +254,9 @@ textarea {
 
 .transaction-hash {
   font-size: 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .transaction-info {
@@ -268,4 +271,9 @@ textarea {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+}
+
+.link {
+  text-decoration: none;
+  color: #07182e;
 }
