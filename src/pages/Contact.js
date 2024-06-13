@@ -22,7 +22,7 @@ const Contact = () => {
         </div>
         <div className='middle'>
           <div className='middle-content'>
-            <p>📍: Sjenjak 101, Osijek, Croatia</p>
+            <p>📍: Sjenjak 31, Osijek, Croatia</p>
             <p>📞: +385 (0) 31 555-555</p>
             <p>📠: +385 (0) 31 51-51-551</p>
           </div>

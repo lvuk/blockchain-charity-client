@@ -6,7 +6,7 @@ const Transaction = ({ transaction }) => {
   return (
     <ExternalLink
       to={`https://sepolia.etherscan.io/tx/${transaction.hash}`}
-      className='transaction link'
+      className='transaction transaction-link'
     >
       <div className='transaction-hash'>
         <p>{transaction.hash}</p>
@@ -25,5 +25,3 @@ const Transaction = ({ transaction }) => {
   );
 };
 export default Transaction;
-
-// 0x0bb6556953d613d96025d091850ed0aa746ee9f819e09bf7956e88287d8a2d15
