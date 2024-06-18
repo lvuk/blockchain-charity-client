@@ -12,6 +12,9 @@ const Navbar = () => {
         </h1>
       </div>
       <div className='links'>
+        <Link to={'/admin'} className='link'>
+          Admin
+        </Link>
         <Link to={'/'} className='link'>
           Home
         </Link>
