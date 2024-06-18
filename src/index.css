@@ -16,7 +16,6 @@ code {
     monospace;
 }
 
-
 nav {
   display: flex;
   align-items: center;
@@ -236,8 +235,6 @@ textarea {
   border: solid 1px lightgray;
 }
 
-
-
 .transaction-hash {
   font-size: 0.85rem;
   display: flex;
@@ -264,7 +261,8 @@ textarea {
   color: #07182e;
 }
 
-.Contact, .Home {
+.Contact,
+.Home {
   font-family: Arial, sans-serif;
   text-align: center;
   position: absolute;
@@ -307,4 +305,17 @@ textarea {
   height: 100px;
   top: -5px;
   left: -5px;
+}
+
+.arrow-icon {
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: lime;
 }
