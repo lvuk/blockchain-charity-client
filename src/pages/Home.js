@@ -22,7 +22,6 @@ const Home = ({ setWalletAddress }) => {
       if (walletAddress) {
         const reconnectWallet = async () => {
           try {
-            await provider.send('eth_requestAccounts', []);
             const signer = await provider.getSigner();
             setSigner(signer);
           } catch (err) {
@@ -105,19 +104,13 @@ const Home = ({ setWalletAddress }) => {
         <div>Address: {walletAddress}</div>
         <button
           onClick={
-            localStorage.getItem('walletAddress')
-              ? disconnectWalletHandler
-              : connectWalletHandler
+            walletAddress ? disconnectWalletHandler : connectWalletHandler
           }
           className={`button ${
-            localStorage.getItem('walletAddress')
-              ? 'button-disconnect'
-              : 'button-connect'
+            walletAddress ? 'button-disconnect' : 'button-connect'
           }`}
         >
-          {localStorage.getItem('walletAddress')
-            ? 'Disconnect'
-            : 'Connect Wallet'}
+          {walletAddress ? 'Disconnect' : 'Connect Wallet'}
         </button>
         <div className='donate'>
           <CurrencyInput
