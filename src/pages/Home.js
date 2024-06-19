@@ -126,6 +126,7 @@ const Home = ({ setWalletAddress }) => {
   return (
     <div className='Home'>
       <img className='home-logo' src='logo.svg' alt='logo.svg'></img>
+      <br />
       <div className='counter-container'>
         <CountUp
           key={state.fundBalance}
@@ -138,7 +139,7 @@ const Home = ({ setWalletAddress }) => {
         <p className='counter'>ETH</p>
       </div>
       <div className='connect-donate'>
-        <div>Address: {walletAddress}</div>
+        {/* <div>Address: {walletAddress}</div> */}
         <button
           onClick={
             walletAddress ? disconnectWalletHandler : connectWalletHandler

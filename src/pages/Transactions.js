@@ -43,6 +43,7 @@ const Transactions = () => {
     const initializeTransactions = async () => {
       const initialTransactions = await fetchTransactions(1);
       setTransactions(initialTransactions);
+      // setTransactions([]);
       setLoading(false);
     };
     initializeTransactions();
@@ -52,7 +53,7 @@ const Transactions = () => {
     <div className='Transactions'>
       {loading ? (
         <Loading />
-      ) : (
+      ) : transactions.length !== 0 ? (
         <InfiniteScroll
           dataLength={transactions.length}
           next={loadMoreTransactions}
@@ -62,13 +63,22 @@ const Transactions = () => {
               <Loading />
             </div>
           }
-          endMessage={<p>No more transactions</p>}
+          // endMessage={<p>No more transactions</p>}
           className='infinite-scroll-component'
         >
           {transactions.map((transaction, index) => (
             <Transaction key={index} transaction={transaction} />
           ))}
         </InfiniteScroll>
+      ) : (
+        <div>
+          <img
+            className='transactions-logo'
+            src='logo.svg'
+            alt='logo.svg'
+          ></img>
+          <h1 className=''>There are no transactions to show</h1>
+        </div>
       )}
     </div>
   );
