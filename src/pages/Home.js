@@ -34,7 +34,6 @@ const Home = ({ setWalletAddress }) => {
   );
   const [provider, setProvider] = useState(null);
   const fundAddress = process.env.REACT_APP_FUND_ADDRESS;
-  const [fundBalance, setFundBalance] = useState(0);
   const [donationAmount, setDonationAmount] = useState(0);
   const [state, dispatch] = useReducer(reducer, initialState);
 

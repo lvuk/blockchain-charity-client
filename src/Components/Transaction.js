@@ -1,5 +1,4 @@
 import { ethers } from 'ethers';
-import { Link } from 'react-router-dom';
 import ExternalLink from './ExternalLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';

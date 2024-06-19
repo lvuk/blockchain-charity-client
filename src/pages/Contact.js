@@ -8,13 +8,11 @@ const Contact = () => {
               width='100%'
               height='450'
               frameborder='0'
-              scrolling='no'
               marginheight='0'
               marginwidth='0'
               src='https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Sjenjak%2031,%20Osijek,%20Croatia+(Biteback)&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=B&amp;output=embed'
-            >
-              <a href='https://www.gps.ie/'>gps devices</a>
-            </iframe>
+              title='Google Maps location of Biteback in Osijek, Croatia'
+            />
           </div>
         </div>
         <div className='middle'>
