@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from '../Components/Modal';
 
 const Admin = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     amount: '',
@@ -11,13 +11,14 @@ const Admin = () => {
   });
   const [showSummary, setShowSummary] = useState(false);
 
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  useEffect(() => {
+    const { name, amount, description, image } = formData;
+    if (name && amount && description && image) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [formData]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,6 +45,7 @@ const Admin = () => {
     // Handle the transaction confirmation logic here
     alert('Transaction confirmed!');
     setShowSummary(false);
+    setIsDisabled(true);
     setFormData({ name: '', amount: '', description: '', image: null });
   };
 
@@ -107,7 +109,7 @@ const Admin = () => {
             )}
           </div>
         </div>
-        <button type='submit' className='button'>
+        <button type='submit' className='button' disabled={isDisabled}>
           Submit
         </button>
       </form>
