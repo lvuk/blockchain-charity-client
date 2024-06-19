@@ -1,13 +1,6 @@
-import { ethers } from 'ethers';
 import ExternalLink from './ExternalLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { useEffect } from 'react';
 
 const Transaction = ({ transaction }) => {
-  useEffect(() => {
-    console.log(transaction);
-  }, []);
   return (
     <ExternalLink
       to={`https://sepolia.etherscan.io/tx/${transaction.transactionHash}`}

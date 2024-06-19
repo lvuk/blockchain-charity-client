@@ -7,7 +7,6 @@ import { abi } from '../Components/ABI';
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchTransactions();
@@ -59,15 +58,15 @@ const Transactions = () => {
     }
   };
 
-  useEffect(() => {
-    const initializeTransactions = async () => {
-      const initialTransactions = await fetchTransactions(1);
-      // setTransactions(initialTransactions);
-      // setTransactions([]);
-      setLoading(false);
-    };
-    initializeTransactions();
-  }, []);
+  // useEffect(() => {
+  //   const initializeTransactions = async () => {
+  //     const initialTransactions = await fetchTransactions(1);
+  //     // setTransactions(initialTransactions);
+  //     // setTransactions([]);
+  //     setLoading(false);
+  //   };
+  //   initializeTransactions();
+  // }, []);
 
   return (
     <div className='Transactions'>
