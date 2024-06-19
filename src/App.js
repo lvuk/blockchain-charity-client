@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ethers } from "ethers";
-import CountUp from "react-countup";
 import Navbar from "./Components/Navbar";
 import Home from "./pages/Home";
 import { ToastContainer } from "react-toastify";

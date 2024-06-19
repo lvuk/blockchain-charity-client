@@ -1,17 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { ethers } from "ethers";
 import CountUp from "react-countup";
-import Navbar from "../Components/Navbar";
 import CurrencyInput from "react-currency-input-field";
 import { Bounce, toast } from "react-toastify";
+
+const initialState = {
+    fundBalance: 0,
+    lastFundBalance: 0,
+    decimals: 5,
+};
+
+function reducer(state, action) {
+    switch (action.type) {
+        case "SET_BALANCE":
+            return {
+                ...state,
+                lastFundBalance: state.fundBalance,
+                fundBalance: parseFloat(action.balance),
+                decimals: Math.max(
+                    5 -
+                        action.balance.toString().split(".")[0].replace("-", "")
+                            .length,
+                    0
+                ),
+            };
+        default:
+            return state;
+    }
+}
 
 const Home = () => {
     const [signer, setSigner] = useState(null);
     const [walletAddress, setWalletAddress] = useState("");
     const [provider, setProvider] = useState(null);
     const fundAddress = process.env.REACT_APP_FUND_ADDRESS;
-    const [fundBalance, setFundBalance] = useState(0);
     const [donationAmount, setDonationAmount] = useState(0);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
         if (window.ethereum) {
@@ -25,18 +49,18 @@ const Home = () => {
     useEffect(() => {
         const getFundBalance = async () => {
             if (provider) {
-                setFundBalance(
-                    ethers.formatEther(await provider.getBalance(fundAddress))
+                const balance = ethers.formatEther(
+                    await provider.getBalance(fundAddress)
                 );
+                dispatch({ type: "SET_BALANCE", balance });
             }
         };
-        // getFundBalance();
-        // const interval = setInterval(() => {
-        //     getFundBalance();
-        // }, 10000);
-
-        // return () => clearInterval(interval);
-    }, [provider]);
+        getFundBalance();
+        const interval = setInterval(() => {
+            getFundBalance();
+        }, 10000);
+        return () => clearInterval(interval);
+    }, [provider, fundAddress]);
 
     const connectWalletHandler = async () => {
         try {
@@ -52,7 +76,6 @@ const Home = () => {
 
     const sendFundsHandler = async () => {
         if (!signer) return;
-        console.log(signer);
         // const tx = await signer.sendTransaction({
         //   to: fundAddress,
         //   value: ethers.parseEther(donationAmount),
@@ -88,9 +111,16 @@ const Home = () => {
             {/* <img src='logo-text-nobg.png' alt='' className='heading' /> */}
 
             <div className="counter-container">
-                <CountUp className="counter" end={100000} duration={5} />
+                <CountUp
+                    key={state.fundBalance}
+                    className="counter"
+                    start={state.lastFundBalance}
+                    end={state.fundBalance}
+                    duration={3}
+                    decimals={state.decimals}
+                />
                 {/* <img src='logo.svg' alt='' className='home-logo' /> */}
-                <p className="counter">USDT</p>
+                <p className="counter">ETH</p>
             </div>
             <div className="connect-donate">
                 <div>Address: {walletAddress}</div>

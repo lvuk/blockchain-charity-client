@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import Transaction from "../Components/Transaction";
-import Pagination from "rc-pagination";
-import { ethers } from "ethers";
 import Loading from "../Components/Loading";
 
 const Transactions = () => {
