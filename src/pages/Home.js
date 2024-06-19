@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import CountUp from 'react-countup';
-import Navbar from '../Components/Navbar';
 import CurrencyInput from 'react-currency-input-field';
 import { Bounce, toast } from 'react-toastify';
 
-const Home = () => {
+const Home = ({ setWalletAddress }) => {
   const [signer, setSigner] = useState(null);
-  const [walletAddress, setWalletAddress] = useState('');
+  const [walletAddress, setLocalWalletAddress] = useState(
+    localStorage.getItem('walletAddress') || ''
+  );
   const [provider, setProvider] = useState(null);
   const fundAddress = process.env.REACT_APP_FUND_ADDRESS;
   const [fundBalance, setFundBalance] = useState(0);
@@ -17,10 +18,23 @@ const Home = () => {
     if (window.ethereum) {
       const provider = new ethers.BrowserProvider(window.ethereum);
       setProvider(provider);
+
+      if (walletAddress) {
+        const reconnectWallet = async () => {
+          try {
+            await provider.send('eth_requestAccounts', []);
+            const signer = await provider.getSigner();
+            setSigner(signer);
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        reconnectWallet();
+      }
     } else {
       alert('Please install MetaMask!');
     }
-  }, []);
+  }, [walletAddress]);
 
   useEffect(() => {
     const getFundBalance = async () => {
@@ -30,12 +44,7 @@ const Home = () => {
         );
       }
     };
-    // getFundBalance();
-    // const interval = setInterval(() => {
-    //     getFundBalance();
-    // }, 10000);
-
-    // return () => clearInterval(interval);
+    getFundBalance();
   }, [provider]);
 
   const connectWalletHandler = async () => {
@@ -45,19 +54,22 @@ const Home = () => {
       const walletAddress = await signer.getAddress();
       setSigner(signer);
       setWalletAddress(walletAddress);
+      setLocalWalletAddress(walletAddress);
+      localStorage.setItem('walletAddress', walletAddress);
     } catch (err) {
       console.error(err);
     }
   };
 
+  const disconnectWalletHandler = () => {
+    setSigner(null);
+    setWalletAddress('');
+    setLocalWalletAddress('');
+    localStorage.removeItem('walletAddress');
+  };
+
   const sendFundsHandler = async () => {
     if (!signer) return;
-    console.log(signer);
-    // const tx = await signer.sendTransaction({
-    //   to: fundAddress,
-    //   value: ethers.parseEther(donationAmount),
-    // });
-    // console.log('Transaction:', tx);
     toast.promise(
       signer.sendTransaction({
         to: fundAddress,
@@ -82,21 +94,30 @@ const Home = () => {
       }
     );
   };
+
   return (
     <div className='Home'>
-      {/* <h1>BiteBack</h1> */}
-      {/* <img src='logo-text-nobg.png' alt='' className='heading' /> */}
-
       <div className='counter-container'>
         <CountUp className='counter' end={100000} duration={5} />
-        {/* <img src='logo.svg' alt='' className='home-logo' /> */}
         <p className='counter'>USDT</p>
       </div>
       <div className='connect-donate'>
         <div>Address: {walletAddress}</div>
-
-        <button onClick={connectWalletHandler} className='button'>
-          {walletAddress ? 'Connected' : 'Connect Wallet'}
+        <button
+          onClick={
+            localStorage.getItem('walletAddress')
+              ? disconnectWalletHandler
+              : connectWalletHandler
+          }
+          className={`button ${
+            localStorage.getItem('walletAddress')
+              ? 'button-disconnect'
+              : 'button-connect'
+          }`}
+        >
+          {localStorage.getItem('walletAddress')
+            ? 'Disconnect'
+            : 'Connect Wallet'}
         </button>
         <div className='donate'>
           <CurrencyInput
@@ -124,4 +145,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;

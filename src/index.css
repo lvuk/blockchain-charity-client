@@ -409,3 +409,13 @@ textarea {
   font-size: 14px;
   color: #495057;
 }
+
+.button-disconnect {
+  color: white;
+  background-color: red;
+}
+
+.button-disconnect:hover {
+  color: white;
+  background-color: red;
+}

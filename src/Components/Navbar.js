@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Navbar = () => {
+const Navbar = ({ walletAddress, requiredAddress }) => {
   return (
     <nav>
       <div className='logo'>
@@ -12,9 +12,12 @@ const Navbar = () => {
         </h1>
       </div>
       <div className='links'>
-        <Link to={'/admin'} className='link'>
-          Admin
-        </Link>
+        {walletAddress === requiredAddress && (
+          <Link to={'/admin'} className='link'>
+            Admin
+          </Link>
+        )}
+
         <Link to={'/'} className='link'>
           Home
         </Link>
