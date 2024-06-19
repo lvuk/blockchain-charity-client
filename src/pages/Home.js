@@ -125,9 +125,17 @@ const Home = ({ setWalletAddress }) => {
 
   return (
     <div className='Home'>
+      <img className='home-logo' src='logo.svg' alt='logo.svg'></img>
       <div className='counter-container'>
-        <CountUp className='counter' end={100000} duration={5} />
-        <p className='counter'>USDT</p>
+        <CountUp
+          key={state.fundBalance}
+          className='counter'
+          start={state.lastFundBalance}
+          end={state.fundBalance}
+          duration={1}
+          decimals={state.decimals}
+        />
+        <p className='counter'>ETH</p>
       </div>
       <div className='connect-donate'>
         <div>Address: {walletAddress}</div>
