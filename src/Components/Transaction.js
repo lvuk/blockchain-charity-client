@@ -23,16 +23,15 @@ const Transaction = ({ transaction }) => {
           </p>
         </div>
         <div className='transaction-photo'>
-          <div className='transaction-from-to'>
-            <img
-              src={transaction.imageBase64}
-              alt=''
-              className='transaction-image'
-            />
-          </div>
+          <img
+            src={transaction.imageBase64}
+            alt='Transaction'
+            className='transaction-image'
+          />
         </div>
       </div>
     </ExternalLink>
   );
 };
+
 export default Transaction;

@@ -235,13 +235,46 @@ textarea {
   align-items: flex-start;
   justify-content: space-between;
 }
-
 .transaction-info {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
   font-size: 1rem;
+  word-wrap: break-word;
+  max-height: 150px; /* Adjust the height as needed */
+  overflow-y: auto;
+  margin-right: 1rem; /* Add some margin for spacing */
+}
+
+.transaction-info p {
+  margin: 0.5rem 0; /* Add some margin for better spacing */
+}
+
+.transaction-container {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: space-between; /* Ensure even spacing */
+  gap: 20px; /* Adjust the gap as needed */
+  width: 100%; /* Ensure the container takes full width */
+  padding: 1rem;
+  /* border: solid 1px lightgray; */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.transaction-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 100px;
+  height: 100px;
+}
+
+.transaction-image {
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 .transaction-from-to {
@@ -449,8 +482,8 @@ textarea {
   height: 70%;
 }
 
-.transaction-image {
+/* .transaction-image {
   border: black 1px solid;
   width: 150px;
   height: 150px;
-}
+} */

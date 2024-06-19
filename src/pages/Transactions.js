@@ -50,6 +50,7 @@ const Transactions = () => {
         transactionHash: event.transactionHash,
       }));
       console.log(formattedEvents);
+      formattedEvents.reverse();
       setTransactions(formattedEvents);
       setLoading(false);
     } else {
