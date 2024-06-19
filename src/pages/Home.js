@@ -1,8 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { ethers } from 'ethers';
 import CountUp from 'react-countup';
 import CurrencyInput from 'react-currency-input-field';
 import { Bounce, toast } from 'react-toastify';
+
+const initialState = {
+  fundBalance: 0,
+  lastFundBalance: 0,
+  decimals: 5,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'SET_BALANCE':
+      return {
+        ...state,
+        lastFundBalance: state.fundBalance,
+        fundBalance: parseFloat(action.balance),
+        decimals: Math.max(
+          5 - action.balance.toString().split('.')[0].replace('-', '').length,
+          0
+        ),
+      };
+    default:
+      return state;
+  }
+}
 
 const Home = ({ setWalletAddress }) => {
   const [signer, setSigner] = useState(null);
@@ -13,6 +36,7 @@ const Home = ({ setWalletAddress }) => {
   const fundAddress = process.env.REACT_APP_FUND_ADDRESS;
   const [fundBalance, setFundBalance] = useState(0);
   const [donationAmount, setDonationAmount] = useState(0);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     if (window.ethereum) {
@@ -38,13 +62,18 @@ const Home = ({ setWalletAddress }) => {
   useEffect(() => {
     const getFundBalance = async () => {
       if (provider) {
-        setFundBalance(
-          ethers.formatEther(await provider.getBalance(fundAddress))
+        const balance = ethers.formatEther(
+          await provider.getBalance(fundAddress)
         );
+        dispatch({ type: 'SET_BALANCE', balance });
       }
     };
     getFundBalance();
-  }, [provider]);
+    const interval = setInterval(() => {
+      getFundBalance();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [provider, fundAddress]);
 
   const connectWalletHandler = async () => {
     try {

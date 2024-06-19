@@ -24,11 +24,15 @@ nav {
   background-color: var(--accent-color);
   color: white;
 }
-
-.home-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.home-logo {
+  z-index: -100;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .logo h1 {
@@ -51,11 +55,6 @@ nav {
 
 h1 {
   color: #333;
-}
-
-img {
-  max-width: 200px;
-  margin: 20px 0;
 }
 
 .button {
@@ -110,14 +109,9 @@ div {
 }
 
 .counter-container p {
-  font-size: 80px;
+  font-size: 100px;
   margin: 0;
   color: white;
-}
-
-.home-logo {
-  width: 512px;
-  height: 512px;
 }
 
 .heading {
@@ -130,8 +124,8 @@ div {
   background: rgb(251, 251, 235);
   background: radial-gradient(
     circle,
-    rgba(102, 122, 143, 1) 10%,
-    rgba(7, 24, 46, 1) 100%
+    rgba(7, 24, 46, 1) 75%,
+    rgba(102, 122, 143, 1) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -259,10 +253,19 @@ textarea {
   font-family: Arial, sans-serif;
   text-align: center;
   position: absolute;
-  width: 80%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.Contact {
+  width: 80%;
+}
+.Home {
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 
 .Transactions {

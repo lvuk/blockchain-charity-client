@@ -1,5 +1,3 @@
-import Navbar from '../Components/Navbar';
-
 const Contact = () => {
   return (
     <div className='Contact'>
