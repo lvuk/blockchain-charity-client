@@ -97,17 +97,8 @@ const Home = ({ setWalletAddress }) => {
 
   const sendFundsHandler = async () => {
     if (!signer) return;
-    toast.promise(
-      signer.sendTransaction({
-        to: fundAddress,
-        value: ethers.parseEther(donationAmount),
-      }),
-      {
-        pending: 'Transaction is pending',
-        success: 'Transaction success',
-        error: 'Transaction rejected',
-      },
-      {
+    if (!donationAmount || parseFloat(donationAmount) <= 0) {
+      toast.error('Please enter a valid donation amount.', {
         position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
@@ -118,8 +109,38 @@ const Home = ({ setWalletAddress }) => {
         progress: undefined,
         theme: 'dark',
         transition: Bounce,
-      }
-    );
+      });
+      return;
+    }
+
+    try {
+      await toast.promise(
+        signer.sendTransaction({
+          to: fundAddress,
+          value: ethers.parseEther(donationAmount),
+        }),
+        {
+          pending: 'Transaction is pending',
+          success: 'Transaction success',
+          error: 'Transaction rejected',
+        },
+        {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          pauseOnFocusLoss: false,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+          transition: Bounce,
+        }
+      );
+      setDonationAmount(0); // Reset the donation amount state on success
+    } catch (error) {
+      console.error('Transaction failed', error);
+    }
   };
 
   return (
@@ -138,7 +159,6 @@ const Home = ({ setWalletAddress }) => {
         <p className='counter'>ETH</p>
       </div>
       <div className='connect-donate'>
-        {/* <div>Address: {walletAddress}</div> */}
         <button
           onClick={
             walletAddress ? disconnectWalletHandler : connectWalletHandler
@@ -158,6 +178,7 @@ const Home = ({ setWalletAddress }) => {
             allowDecimals={true}
             decimalsLimit={10}
             className='currency-input'
+            value={donationAmount} // Set the input value to donationAmount
             disabled={!walletAddress}
             onValueChange={(amount) => {
               setDonationAmount(amount);
