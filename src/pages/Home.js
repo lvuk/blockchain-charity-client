@@ -109,14 +109,14 @@ const Home = () => {
         <div className="Home">
             {/* <h1>BiteBack</h1> */}
             {/* <img src='logo-text-nobg.png' alt='' className='heading' /> */}
-
+            <img className="home-logo" src="logo.svg" alt="logo.svg"></img>
             <div className="counter-container">
                 <CountUp
                     key={state.fundBalance}
                     className="counter"
                     start={state.lastFundBalance}
                     end={state.fundBalance}
-                    duration={3}
+                    duration={1}
                     decimals={state.decimals}
                 />
                 {/* <img src='logo.svg' alt='' className='home-logo' /> */}
